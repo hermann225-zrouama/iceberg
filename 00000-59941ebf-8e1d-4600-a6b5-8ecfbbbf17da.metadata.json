@@ -1,0 +1,96 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "06e16e8c-a0aa-4545-9bcb-1073420123c2",
+  "location" : "s3://warehouse/sales/sales_data_raw_08a551e6-922a-4a0b-8f63-20c6b90bc0cb",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1753670340908,
+  "last-column-id" : 6,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "order_id",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 2,
+      "name" : "customer_id",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 3,
+      "name" : "product",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "quantity",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 5,
+      "name" : "price",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 6,
+      "name" : "order_date",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "root",
+    "write.metadata.delete-after-commit.enabled" : "false",
+    "gc.enabled" : "false",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 4937913972037607112,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 4937913972037607112,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 4937913972037607112,
+    "timestamp-ms" : 1753670340908,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1753670312760",
+      "added-data-files" : "6",
+      "added-records" : "6",
+      "added-files-size" : "10183",
+      "changed-partition-count" : "1",
+      "total-records" : "6",
+      "total-files-size" : "10183",
+      "total-data-files" : "6",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "s3://warehouse/sales/sales_data_raw_08a551e6-922a-4a0b-8f63-20c6b90bc0cb/metadata/snap-4937913972037607112-1-1dbae68c-8855-4981-a307-f7a81346a062.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1753670340908,
+    "snapshot-id" : 4937913972037607112
+  } ],
+  "metadata-log" : [ ]
+}
