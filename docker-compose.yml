@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-  # Nessie Catalog Server Using In-Memory Store
   nessie:
     image: projectnessie/nessie:latest
     container_name: nessie
@@ -15,9 +14,9 @@ services:
       - QUARKUS_DATASOURCE_USERNAME=nessie
       - QUARKUS_DATASOURCE_PASSWORD=nessie
     volumes:
-      - ./nessie-data:/nessie/data  # Mount local directory to persist RocksDB data
+      - ./nessie-data:/nessie/data  
     ports:
-      - "19120:19120"  # Expose Nessie API port
+      - "19120:19120"  
     networks:
       intro-network:
   # Minio Storage Server
@@ -39,7 +38,7 @@ services:
       timeout: 20s
       retries: 3
     volumes:
-      - ./minio-data:/minio-data  # Mount the local folder to container
+      - ./minio-data:/minio-data  
     entrypoint: >
       /bin/sh -c "
       minio server /data --console-address ':9001' &
@@ -56,7 +55,7 @@ services:
   
   # Spark
   spark:
-    platform: linux/x86_64
+    #platform: linux/x86_64
     image: alexmerced/spark35nb:latest
     ports: 
       - 8080:8080    # Master Web UI
@@ -74,9 +73,9 @@ services:
       - SPARK_MASTER_WEBUI_PORT=8080
       - SPARK_WORKER_WEBUI_PORT=8081
       - SPARK_HISTORY_OPTS=-Dspark.history.fs.logDirectory=/tmp/spark-events
-      - SPARK_HOME=/opt/spark  # Set SPARK_HOME explicitly
+      - SPARK_HOME=/opt/spark  
     volumes:
-      - ./notebook-seed:/workspace/seed-data  # Volume for seeding data into the container
+      - ./notebook-seed:/workspace/seed-data  
     container_name: spark
     entrypoint: >
       /bin/bash -c "
@@ -92,7 +91,7 @@ services:
 
   # Dremio
   dremio:
-    platform: linux/x86_64
+    #platform: linux/x86_64
     image: dremio/dremio-oss:latest
     ports:
       - 9047:9047
@@ -102,6 +101,8 @@ services:
     container_name: dremio
     environment:
       - DREMIO_JAVA_SERVER_EXTRA_OPTS=-Dpaths.dist=file:///opt/dremio/data/dist
+    volumes:
+      - ./dremio-data:/opt/dremio/data
     networks:
       intro-network:
 
